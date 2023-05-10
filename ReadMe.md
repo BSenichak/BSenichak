@@ -1,6 +1,3 @@
-# 💫 About Me:
-🔭 I’m currently working on presence control app<br>🤝 I'm looking for help with finding a web developer job<br>🌱 I’m currently learning databases and backend<br>💬 Ask me about something<br>⚡ Fun fact I'm designer of optical and optoelectronics devices
-
 
 ## 🌐 Socials:
 [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/Badyasik#8955) [![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/badyasik_) [![Codepen](https://img.shields.io/badge/Codepen-000000?style=for-the-badge&logo=codepen&logoColor=white)](https://codepen.io/badyasik) 
@@ -12,5 +9,3 @@
 ![](https://github-readme-streak-stats.herokuapp.com/?user=BSenichak&theme=tokyonight&hide_border=false)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=BSenichak&theme=tokyonight&hide_border=false&include_all_commits=true&count_private=true&layout=compact)
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=BSenichak&theme=discord&no-frame=false&no-bg=false&margin-w=4)
