@@ -26,7 +26,8 @@ tf.ready().then(function () {
                         });
                         table.append(tr);
                     });
-                    table.after(createDownloadLinkJSON(array2D));
+                    document.querySelector(".link").innerHTML = ""
+                    document.querySelector(".link").append(createDownloadLinkJSON(array2D));
                 });
             }, 100);
         }
