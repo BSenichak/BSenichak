@@ -1,9 +1,4 @@
-.leaf {
-    transform-style: preserve-3d;
-    width: 1px;
-    height: 1px;
-    position: absolute;
-}
+
 
 body {
     min-height: 100vh;

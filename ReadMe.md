@@ -38,8 +38,6 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" height="42" alt="photoshop logo"  />
 </div>
 
-###
-
 <div align="center">
   <a href="https://www.instagram.com/badyasik_/" target="_blank">
     <img src="https://img.shields.io/static/v1?message=Instagram&logo=instagram&label=&color=E4405F&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="instagram logo"  />
@@ -53,4 +51,18 @@
   <a href="http:/t.me/badyasik" target="_blank">
     <img src="https://img.shields.io/static/v1?message=Telegram&logo=telegram&label=&color=2CA5E0&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="telegram logo"  />
   </a>
+
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=BSenichak&label=Profile%20views&color=0e75b6&style=flat" alt="BSenichak" /> </p>
+
+<p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=BSenichak&theme=dark_lover" alt="BSenichak" /></a> </p>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<p>&nbsp;<img align="center" height="180em" src="https://github-readme-stats.vercel.app/api?username=BSenichak&show_icons=true&locale=en&theme=highcontrast" alt="BSenichak" /></p>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+
+<p><img align="center" height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=BSenichak&theme=highcontrast" alt="BSenichak" /></p>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<img align="center" src="https://github-readme-activity-graph.vercel.app/graph?username=BSenichak&theme=react-dark"/>
 </div>

@@ -15,15 +15,19 @@ let distanceTo = (x1, y1, x2, y2) =>
 let shouldDraw = (x, y) => distanceTo(x1, y1, x, y) >= dist_to_draw;
 
 let addLeaf = (x, y) => {
-    const str = document.createElement("div");
-    str.innerHTML = "&#127809";
-    str.className = "leaf";
-    str.style.top = `${y + rand(-20, 20)}px`;
-    str.style.left = `${x}px`;
-    str.style.fontSize = selRand(fsize);
-    document.body.appendChild(str);
-    const fs = 10 + 5 * parseFloat(getComputedStyle(str).fontSize);
-    str.animate(
+    const leaf = document.createElement("div");
+    leaf.innerHTML = "&#127809";
+    leaf.className = "leaf";
+    leaf.style.top = `${y + rand(-20, 20)}px`;
+    leaf.style.left = `${x}px`;
+    leaf.style.fontSize = selRand(fsize);
+    leaf.style.transformStyle = "preserve-3d"
+    leaf.style.width = "1px"
+    leaf.style.height = "1px"
+    leaf.style.position = "absolute"
+    document.body.appendChild(leaf);
+    const fs = 10 + 5 * parseFloat(getComputedStyle(leaf).fontSize);
+    leaf.animate(
         {
             translate: `0 ${y + fs > vh ? vh - y : fs}px`,
             opacity: 0,
@@ -38,7 +42,7 @@ let addLeaf = (x, y) => {
         }
     );
     setTimeout(() => {
-        str.remove();
+        leaf.remove();
     }, delay);
 };
 
