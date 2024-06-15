@@ -56,13 +56,9 @@
 
 <p align="left"> <a href="https://github.com/ryo-ma/github-profile-trophy"><img src="https://github-profile-trophy.vercel.app/?username=BSenichak&theme=dark_lover" alt="BSenichak" /></a> </p>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <p>&nbsp;<img align="center" height="180em" src="https://github-readme-stats.vercel.app/api?username=BSenichak&show_icons=true&locale=en&theme=highcontrast" alt="BSenichak" /></p>
-
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <p><img align="center" height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=BSenichak&theme=highcontrast" alt="BSenichak" /></p>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <img align="center" src="https://github-readme-activity-graph.vercel.app/graph?username=BSenichak&theme=react-dark"/>
 </div>
