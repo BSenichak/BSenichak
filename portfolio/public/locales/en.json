@@ -1,0 +1,9 @@
+{
+  "home": {
+    "title": "Home",
+    "description": "Home page description"
+  },
+  "header": {
+    "blog": "Blog"
+  }
+}
