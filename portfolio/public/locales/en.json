@@ -5,5 +5,27 @@
   },
   "header": {
     "blog": "Blog"
+  },
+  "main": {
+    "title": "Web developer",
+    "description1": "Hey",
+    "description2": "I'm",
+    "description2_1": "Bogdan",
+    "description3": "Full-Stack Developer",
+    "description4": "Need a modern and responsive website for your business? I specialize in building fast and efficient web solutions using React and Express.",
+    "description5": "let’s talk",
+    "fullname": "Senichak Bogdan",
+    "email": "bsenk77@gmail.com",
+    "location": "Ukraine, Kyiv",
+    "workTime": "Full-time / freelancer",
+    "website": "www.onlyfanc.com",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "description1": "My name is",
+    "description2": "Senichak Bogdan",
+    "description3": "and I specialize in Full-Stack Web Development using",
+    "description4": "and other modern technologies",
+    "description5": "I am a motivated developer who wants to write a clean, effective and scaled code. \nI constantly improve my skills and do not stop there.  \nWhen I do not do, I study new technologies, read or work on creative projects. \nI love the challenges that expand my outlook and help professional and personal growth.  \nLet's create something cool together!"
   }
 }

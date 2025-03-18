@@ -4,6 +4,8 @@ import { Theme as MuiTheme } from "@mui/material/styles";
 // import gsap from "gsap";
 import Header from "./components/Header";
 import { useEffect } from "react";
+import Main from "./components/Main";
+import AboutMe from "./components/AboutMe";
 
 function App() {
     let theme: MuiTheme = useTheme();
@@ -29,6 +31,8 @@ function App() {
     return (
         <>
             <Header />
+            <Main/>
+            <AboutMe/>
         </>
     );
 }

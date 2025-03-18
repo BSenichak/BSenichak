@@ -1,0 +1,71 @@
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set a default font and background color */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Container for centering content */
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Basic styling for headers */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Basic styling for paragraphs */
+p {
+  margin-bottom: 20px;
+}
+
+/* Basic styling for links */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Basic styling for buttons */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#root {
+  min-height: 100vh;
+  min-width: 400px;
+}
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('SofiaSans.ttf');
+}
+
+body {
+  transition: all 0.5s ease-in-out;
+}
+
+

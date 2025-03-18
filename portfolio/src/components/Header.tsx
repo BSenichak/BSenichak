@@ -59,7 +59,7 @@ export default function Header() {
                         <span>GitHub</span>
                     </Link>
                     <Link
-                        to="https://www.fiverr.com/sellers/bsenychak"
+                        to="https://www.fiverr.com/s/e65Radk"
                         target="_blank"
                     >
                         <TbBrandFiverr />
@@ -167,7 +167,10 @@ let LogoBar = styled(Box)`
 let MySelect = styled(Select)`
     background-color: transparent;
     color: inherit;
-    /* & fieldset {
+    & fieldset {
+        border-color: transparent;
+    } 
+    & .MuiOutlinedInput-root:hover {
         border: none;
-    } */
+    }
 `;
