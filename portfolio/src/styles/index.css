@@ -57,17 +57,21 @@ button:hover {
 #root {
   min-height: 100vh;
   min-width: 400px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+  position: fixed;
+  inset: 0;
 }
 
 @font-face {
-    font-family: 'MyFont';
-    src: url('SofiaSans.ttf');
+  font-family: 'MyFont';
+  src: url('SofiaSans.ttf');
 }
 
 body {
   transition: all 0.5s ease-in-out;
-  overflow-y: scroll;
 }
 
 

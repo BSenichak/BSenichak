@@ -106,6 +106,7 @@ let Wrapper = styled(Box)`
     padding: 1rem;
     background-color: transparent;
     background-image: none;
+    scroll-snap-align: start;
 `;
 
 let NavBar = styled(Container)`

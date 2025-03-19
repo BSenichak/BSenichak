@@ -102,6 +102,7 @@ export default Skills;
 let Wrapper = styled(Box)`
     height: 100vh;
     position: relative;
+    scroll-snap-align: start;
 `;
 
 let BG = styled(Box)`
