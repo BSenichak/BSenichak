@@ -15,6 +15,7 @@ import {
     ListItemText,
     styled,
     Typography,
+    useMediaQuery,
     useTheme,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
@@ -39,6 +40,7 @@ import { IoLogoNodejs } from "react-icons/io";
 function Main() {
     let { t } = useTranslation();
     let theme = useTheme();
+    let phone = useMediaQuery("(max-width:600px)");
     return (
         <MyContainer>
             <Title>{t("main.title")}</Title>
@@ -123,7 +125,7 @@ function Main() {
             </MyProfileCard>
             <BanerWrapper>
                 <div>
-                    <Description sx={{ padding: "1rem 0rem" }} variant="h2">
+                    <Description sx={{ padding: "1rem 0rem" }} variant={phone ? "h4" : "h2"}>
                         <div
                             style={{
                                 position: "relative",
@@ -146,14 +148,14 @@ function Main() {
                             }}
                         >
                             {t("main.description3")}
-                            <Tag sx={{ bottom: 10, right: -60 }}>
+                            <Tag sx={phone ? { bottom: 0, right: -35} : { bottom: 10, right: -60 }}>
                                 &lt;/h1&gt;
                             </Tag>
                         </div>
                     </Description>
                     <Description
                         sx={{ padding: "3rem 0rem", width: "85%" }}
-                        variant="h5"
+                        variant={phone ? "h6" : "h5"}
                     >
                         <span
                             style={{
@@ -166,7 +168,7 @@ function Main() {
                             <Tag sx={{ bottom: -30, left: -30 }}>&lt;/p&gt;</Tag>
                         </span>
                     </Description>
-                    <ContactUs variant="h3">
+                    <ContactUs variant={phone ? "h5" : "h2"}>
                         <ContactMeText>{t("main.description5")}</ContactMeText>
                         <IconButton
                             size="large"
@@ -188,6 +190,11 @@ let MyContainer = styled(Container)`
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr 5fr 2fr;
     min-height: 90vh;
+    @media (max-width: 768px) {
+        grid-template-rows: auto;
+        padding: 0;
+    }
+    
 `;
 
 let Title = styled(Typography)`
@@ -196,6 +203,9 @@ let Title = styled(Typography)`
     grid-column: 1/-1;
     text-align: center;
     text-transform: uppercase;
+    @media (max-width: 600px) {
+        font-size: 2rem;
+    }
 `;
 
 let MyProfileCard = styled(Card)`
@@ -204,6 +214,10 @@ let MyProfileCard = styled(Card)`
     flex-direction: column;
     align-self: center;
     padding: 1rem;
+    @media (max-width: 768px) {
+        grid-column: 1/ -1;
+        margin: 1rem;
+    }
 `;
 
 let BanerWrapper = styled(Box)`
@@ -213,17 +227,26 @@ let BanerWrapper = styled(Box)`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 768px) {
+        grid-column: 1/ -1;
+        padding: ${({ theme }) => theme.spacing(6)};;
+    }
+    
 `;
 
 let Tag = styled(Typography)`
     color: ${({ theme }) => theme.palette.primary.main};
     position: absolute;
     font-size: ${({ theme }) => theme.typography.h6.fontSize};
+    @media (max-width: 600px) {
+        font-size: 0.8rem;
+    }
 `;
 
 let Description = styled(Typography)`
     color: ${({ theme }) => theme.palette.text.primary};
     position: relative;
+    
 `;
 
 let ContactMeText = styled(Box)`

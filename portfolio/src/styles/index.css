@@ -56,7 +56,7 @@ button:hover {
 
 #root {
   min-height: 100vh;
-  min-width: 400px;
+  min-width: 375px;
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-snap-type: y proximity;

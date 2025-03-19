@@ -5,6 +5,7 @@ import {
     Typography,
     useTheme,
     IconButton,
+    useMediaQuery,
 } from "@mui/material";
 import { SiTypescript, SiMongodb, SiRedux, SiCss3, SiHtml5, SiJavascript, SiReact } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
@@ -13,6 +14,7 @@ import { useTranslation } from "react-i18next";
 const Skills = () => {
     let theme = useTheme();
     let { t } = useTranslation();
+    let isTablet = useMediaQuery("(max-width: 768px)");
     return (
         <Wrapper>
             <BG />
@@ -25,12 +27,13 @@ const Skills = () => {
                             right: "6rem",
                             fontSize: "10rem",
                             color: theme.palette.primary.main,
+                            display: isTablet ? "none" : "block",
                         }}
                     >
                         &lt;/&gt;
                     </Tag>
-                    <Title variant="h3">{t("skills.title")}</Title>
-                    <Typography variant="h6">
+                    <Title variant={isTablet ? "h4" : "h3"}>{t("skills.title")}</Title>
+                    <Typography variant={isTablet ? "body1" : "h6"} textAlign="center">
                         {t("skills.description")}
                     </Typography>
                 </TitleBar>
@@ -40,56 +43,56 @@ const Skills = () => {
                         darkcolor="#983419"
                         textcontent="HTML"
                     >
-                        <SiHtml5 size="5rem" style={{ padding: "1rem" }} />
+                        <SiHtml5 size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#0c73b8"
                         darkcolor="#07436b"
                         textcontent="CSS"
                     >
-                        <SiCss3 size="5rem" style={{ padding: "1rem" }} />
+                        <SiCss3 size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#e7a020"
                         darkcolor="rgb(154, 107, 21)"
                         textcontent="JavaScript"
                     >
-                        <SiJavascript size="5rem" style={{ padding: "1rem" }} />
+                        <SiJavascript size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#0076c9"
                         darkcolor="#00497c"
                         textcontent="TypeScript"
                     >
-                        <SiTypescript size="5rem" style={{ padding: "1rem" }} />
+                        <SiTypescript size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#28a9e0"
                         darkcolor="#1a6f93"
                         textcontent="React"
                     >
-                        <SiReact size="5rem" style={{ padding: "1rem" }} />
+                        <SiReact size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#f29418"
                         darkcolor="#a56510"
                         textcontent="MySQL"
                     >
-                        <GrMysql size="5rem" style={{ padding: "1rem" }} />
+                        <GrMysql size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#17ad55"
                         darkcolor="#0c602f"
                         textcontent="MongoDB"
                     >
-                        <SiMongodb size="5rem" style={{ padding: "1rem" }} />
+                        <SiMongodb size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                     <SkillItem
                         lightcolor="#7a50be"
                         darkcolor="#482f71"
                         textcontent="Redux"
                     >
-                        <SiRedux size="5rem" style={{ padding: "1rem" }} />
+                        <SiRedux size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
                     </SkillItem>
                 </SkillGrid>
             </MyContainer>
@@ -126,6 +129,9 @@ let MyContainer = styled(Container)`
     align-content: center;
     color: ${({ theme }) => theme.palette.text.primary};
     height: 100%;
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
 `;
 
 let Tag = styled(Typography)`
@@ -186,6 +192,12 @@ let SkillGrid = styled(Box)`
     justify-content: center;
     align-items: center;
     align-self: end;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 5rem);
+        gap: 2rem;
+        align-self: center;
+    }
 `;
 
 interface SkillItemProps {
@@ -205,5 +217,9 @@ let SkillItem = styled(IconButton)<SkillItemProps>`
         bottom: -2rem;
         color: ${({ theme, lightcolor, darkcolor }) =>
             theme.palette.mode == "dark" ? lightcolor : darkcolor};
+        @media (max-width: 768px) {
+            font-size: 0.8rem;
+        }
     }
+
 `;

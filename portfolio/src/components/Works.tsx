@@ -7,6 +7,7 @@ import {
     CardHeader,
     CardMedia,
     CardContent,
+    useMediaQuery,
 } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
@@ -60,13 +61,15 @@ let slides = [
 
 const Works = () => {
     let { t } = useTranslation();
+    let isTablet = useMediaQuery("(max-width: 768px)");
+    let isMobile = useMediaQuery("(max-width: 400px)");
     return (
         <Wrapper>
             <BG />
             <MyContainer>
                 <TitleBar>
                     <Title variant="h3">{t("works.title")}</Title>
-                    <Typography variant="h6">
+                    <Typography variant={isTablet ? "body1" : "h6"} textAlign={"center"}>
                         {t("works.description")}
                     </Typography>
                 </TitleBar>
@@ -88,8 +91,8 @@ const Works = () => {
                             EffectCards,
                         ]}
                         spaceBetween={10}
-                        slidesPerView={3}
-                        navigation
+                        slidesPerView={isMobile ? 1: isTablet ? 2 : 3}
+                        navigation={true}
                         pagination={{ clickable: true }}
                         effect="cards"
                     >
@@ -102,7 +105,7 @@ const Works = () => {
                                     alignItems: "center",
                                 }}
                             >
-                                <Card sx={{ width: "100%", height: "100%" }}>
+                                <Card sx={{ width: "100%", height: "100%",}}>
                                     <CardHeader
                                         title={slide.title}
                                         subheader={slide.subtitle}
@@ -137,6 +140,7 @@ let Wrapper = styled(Box)`
     height: 100vh;
     position: relative;
     scroll-snap-align: start;
+    
 `;
 
 let BG = styled(Box)`
@@ -160,12 +164,13 @@ let MyContainer = styled(Container)`
     align-content: center;
     color: ${({ theme }) => theme.palette.text.primary};
     height: 100%;
+    @media (max-width: 768px) {
+        padding: 1rem 1rem 5rem;
+        grid-template-rows: 100px 1fr;
+        align-content: center;
+    }
 `;
 
-let Tag = styled(Typography)`
-    color: ${({ theme }) => theme.palette.primary.main};
-    font-size: ${({ theme }) => theme.typography.h6.fontSize};
-`;
 
 let TitleBar = styled(Box)`
     display: flex;
@@ -214,4 +219,5 @@ let MySwiper = styled(Swiper)`
     width: 100%;
     height: 100%;
     --swiper-theme-color: ${({ theme }) => theme.palette.primary.main};
+
 `;

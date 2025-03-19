@@ -4,6 +4,7 @@ import {
     Container,
     Typography,
     Button,
+    useMediaQuery,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { IoMdLink } from "react-icons/io";
@@ -11,12 +12,13 @@ import { Link } from "react-router";
 
 const BlogBlock = () => {
     let { t } = useTranslation();
+    let isTablet = useMediaQuery("(max-width: 768px)");
     return (
         <Wrapper>
             <MyContainer>
                 <TitleBar>
                     <Title variant="h3">{t("blogblock.title")}</Title>
-                    <Typography variant="h6">
+                    <Typography variant={isTablet ? "body1" : "h6"}>
                         {t("blogblock.description")}
                     </Typography>
                 </TitleBar>
@@ -39,7 +41,13 @@ const BlogBlock = () => {
                             {t("blogblock.morelink")}
                         </Link>
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: "right"}}>15.01.2000</Typography>
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ textAlign: "right" }}
+                    >
+                        15.01.2000
+                    </Typography>
                 </NewsBlock>
                 <Box
                     sx={{
@@ -77,6 +85,13 @@ let MyContainer = styled(Container)`
     align-content: center;
     color: ${({ theme }) => theme.palette.text.primary};
     height: 100%;
+    @media (max-width: 768px) {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        justify-content: center;
+    }
 `;
 
 let TitleBar = styled(Box)`
@@ -138,5 +153,21 @@ let NewsBlock = styled(Box)`
         width: 100%;
         height: 100%;
         padding: 0 3rem;
+    }
+
+    @media (max-width: 768px) {
+        text-align: center;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        & img {
+            max-height: 300px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        & img {
+            display: none;
+        }
     }
 `;

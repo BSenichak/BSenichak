@@ -6,18 +6,25 @@ import {
     Card,
     CardContent,
     useTheme,
+    useMediaQuery,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
-
 const AboutMe = () => {
     let theme = useTheme();
-    let {t } = useTranslation();
+    let { t } = useTranslation();
+    let isTablet = useMediaQuery("(max-width: 768px)");
     return (
         <Wrapper>
             <BG />
             <MyContainer>
-                <Card sx={{ gridColumn: "1/5" }}>
+                <Card
+                    sx={
+                        isTablet
+                            ? { gridColumn: "1/-1" }
+                            : { gridColumn: "1/5" }
+                    }
+                >
                     <CardContent>
                         <Typography
                             variant="h3"
@@ -31,19 +38,23 @@ const AboutMe = () => {
                     <img src="react.gif" />
                 </Img>
                 <Card
-                    sx={{
-                        gridColumn: "1/8",
-                        gridRow: "2/3",
-                        alignSelf: "start",
-                    }}
+                    sx={
+                        isTablet
+                            ? { gridColumn: "1/-1" }
+                            : {
+                                  gridColumn: "1/8",
+                                  gridRow: "2/3",
+                                  alignSelf: "start",
+                              }
+                    }
                 >
                     <CardContent>
                         <Tag variant="body1">&lt;p&gt;</Tag>
                         <Box sx={{ padding: "0 1rem" }}>
-                            <Typography variant="h3" color="primary">
+                            <Typography variant={isTablet ? "h5" : "h4"} color="primary">
                                 Hello
                             </Typography>
-                            <Typography variant="body1">
+                            <Typography variant={isTablet ? "body1" : "body2"} >
                                 {t("about.description1")}
                                 <span
                                     style={{
@@ -89,7 +100,7 @@ let BG = styled(Box)`
     inset: 0;
     z-index: -1;
     background-image: url("./aboutBg.png");
-    background-clip: initial;
+    background-size: cover;
     filter: grayscale()
         ${({ theme }) => (theme.palette.mode == "dark" ? "" : "invert()")};
 `;
@@ -103,6 +114,10 @@ let MyContainer = styled(Container)`
     align-content: center;
     color: ${({ theme }) => theme.palette.text.primary};
     height: 100%;
+    @media (max-width: 768px) {
+        padding: 1rem;
+        grid-template-rows: auto;
+    }
 `;
 
 let Img = styled(Card)`
@@ -119,6 +134,9 @@ let Img = styled(Card)`
         height: 100%;
         object-fit: contain;
         object-position: center;
+    }
+    @media (max-width: 768px) {
+        display: none;
     }
 `;
 
