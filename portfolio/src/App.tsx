@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import { useEffect } from "react";
 import Main from "./components/Main";
 import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
 
 function App() {
     let theme: MuiTheme = useTheme();
@@ -33,6 +34,7 @@ function App() {
             <Header />
             <Main/>
             <AboutMe/>
+            <Skills/>
         </>
     );
 }

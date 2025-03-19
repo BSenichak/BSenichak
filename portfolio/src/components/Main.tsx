@@ -207,7 +207,7 @@ let MyProfileCard = styled(Card)`
 `;
 
 let BanerWrapper = styled(Box)`
-    grid-column: 5/-1;
+    grid-column: 6/-1;
     padding: ${({ theme }) => theme.spacing(2)};
     color: ${({ theme }) => theme.palette.text.primary};
     display: flex;
@@ -246,5 +246,8 @@ let Chips = styled(Box)`
     & svg {
         color: ${({ theme }) => theme.palette.primary.main};
         font-size: 1.2rem;
+    }
+    & > div {
+        flex-grow: 1;
     }
 `;

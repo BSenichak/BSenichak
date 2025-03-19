@@ -25,7 +25,9 @@ const AboutMe = () => {
                         </Typography>
                     </CardContent>
                 </Card>
-                <Img src="react.gif" />
+                <Img>
+                    <img src="react.gif" />
+                </Img>
                 <Card
                     sx={{
                         gridColumn: "1/8",
@@ -100,17 +102,21 @@ let MyContainer = styled(Container)`
     height: 100%;
 `;
 
-let Img = styled("img")`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+let Img = styled(Card)`
     grid-column: 9/-1;
     grid-row: 1/3;
     border-radius: 2rem;
     filter: ${({ theme }) => (theme.palette.mode == "dark" ? "invert()" : "")}
         grayscale();
     opacity: 0.8;
+    background-color: white;
+    box-shadow: none;
+    & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+    }
 `;
 
 let Tag = styled(Typography)`

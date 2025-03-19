@@ -12,7 +12,7 @@ export const lightTheme: MuiTheme = createTheme({
         },
         background: {
             default: "#ffffff",
-            paper: "#ddd",
+            paper: "#eee",
         },
     },
     typography: {
