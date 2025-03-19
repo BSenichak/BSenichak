@@ -6,12 +6,13 @@ import {
     useTheme,
     IconButton,
 } from "@mui/material";
-import { t } from "i18next";
 import { SiTypescript, SiMongodb, SiRedux, SiCss3, SiHtml5, SiJavascript, SiReact } from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
+import { useTranslation } from "react-i18next";
 
 const Skills = () => {
     let theme = useTheme();
+    let { t } = useTranslation();
     return (
         <Wrapper>
             <BG />
@@ -28,7 +29,7 @@ const Skills = () => {
                     >
                         &lt;/&gt;
                     </Tag>
-                    <Title variant="h3">Skills</Title>
+                    <Title variant="h3">{t("skills.title")}</Title>
                     <Typography variant="h6">
                         {t("skills.description")}
                     </Typography>
@@ -109,7 +110,7 @@ let BG = styled(Box)`
     z-index: -1;
     background-image: url("./Skills.jpg");
     background-clip: initial;
-    background-size: contain;
+    background-size: cover;
     opacity: 0.3;
     filter: grayscale(70%)
         ${({ theme }) => (theme.palette.mode == "dark" ? "" : "invert()")};

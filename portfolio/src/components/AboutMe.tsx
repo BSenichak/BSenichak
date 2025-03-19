@@ -7,10 +7,12 @@ import {
     CardContent,
     useTheme,
 } from "@mui/material";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
+
 
 const AboutMe = () => {
     let theme = useTheme();
+    let {t } = useTranslation();
     return (
         <Wrapper>
             <BG />
@@ -21,7 +23,7 @@ const AboutMe = () => {
                             variant="h3"
                             sx={{ color: "primary.main", textAlign: "center" }}
                         >
-                            About Me
+                            {t("about.title")}
                         </Typography>
                     </CardContent>
                 </Card>

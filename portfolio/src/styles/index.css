@@ -57,6 +57,7 @@ button:hover {
 #root {
   min-height: 100vh;
   min-width: 400px;
+  overflow: hidden;
 }
 
 @font-face {
@@ -66,6 +67,7 @@ button:hover {
 
 body {
   transition: all 0.5s ease-in-out;
+  overflow-y: scroll;
 }
 
 

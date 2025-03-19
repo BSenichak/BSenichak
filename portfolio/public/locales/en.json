@@ -26,9 +26,30 @@
     "description2": "Senichak Bogdan",
     "description3": "and I specialize in Full-Stack Web Development using",
     "description4": "and other modern technologies",
-    "description5": "I am a motivated developer who wants to write a clean, effective and scaled code. \nI constantly improve my skills and do not stop there.  \nWhen I do not do, I study new technologies, read or work on creative projects. \nI love the challenges that expand my outlook and help professional and personal growth.  \nLet's create something cool together!"
+    "description5": "I am a motivated developer who wants to write a clean, effective and scaled code. \nI constantly improve my skills and do not stop there.  \nWhen I do not do, I study new technologies, read or work on creative projects. \nI love the challenges that expand my outlook and help professional and personal growth.  \nLet's create something cool together!",
+    "title": "About me"
   },
   "skills": {
-    "description": "I want to never stop learning and improve"
+    "description": "I want to never stop learning and improve",
+    "title": "Skills"
+  },
+  "works": {
+    "title": "My works",
+    "description": "I had the pleasure to work with these wonderful projects"
+  },
+  "blogblock": {
+    "title": "Blog",
+    "description": "My thoughts about technology, welcome",
+    "readmore": "View More",
+    "morelink": "Read more..."
+  },
+  "contuct": {
+    "title": "Contact",
+    "description": "I’m currently available for freelance work",
+    "text": "Send me a message",
+    "send": "Send message",
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Your message"
   }
 }

@@ -13,7 +13,6 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
-    Paper,
     styled,
     Typography,
     useTheme,
@@ -200,10 +199,11 @@ let Title = styled(Typography)`
 `;
 
 let MyProfileCard = styled(Card)`
-    grid-column: 1/ 4;
+    grid-column: 1/ 5;
     display: flex;
     flex-direction: column;
     align-self: center;
+    padding: 1rem;
 `;
 
 let BanerWrapper = styled(Box)`

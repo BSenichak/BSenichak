@@ -7,6 +7,10 @@ import { useEffect } from "react";
 import Main from "./components/Main";
 import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
+import Works from "./components/Works";
+import BlogBlock from "./components/BlogBlock";
+import ContuctUs from "./components/ContuctUs";
+import Footer from "./components/Footer";
 
 function App() {
     let theme: MuiTheme = useTheme();
@@ -35,6 +39,10 @@ function App() {
             <Main/>
             <AboutMe/>
             <Skills/>
+            <Works/>
+            <BlogBlock/>
+            <ContuctUs/>
+            <Footer/>
         </>
     );
 }
