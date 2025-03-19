@@ -9,10 +9,13 @@ import {
 import { useTranslation } from "react-i18next";
 import { IoMdLink } from "react-icons/io";
 import { Link } from "react-router";
+import { motion } from "motion/react";
+import { useRef } from "react";
 
 const BlogBlock = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
+    let ref = useRef<HTMLDivElement>(document.querySelector("#root"));
     return (
         <Wrapper>
             <MyContainer>
@@ -22,33 +25,45 @@ const BlogBlock = () => {
                         {t("blogblock.description")}
                     </Typography>
                 </TitleBar>
-                <NewsBlock>
-                    <img src="https://picsum.photos/1000" alt="" />
-                    <Typography variant="h4" sx={{ color: "primary.main" }}>
-                        lorem ipsum
-                    </Typography>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iste impedit maxime necessitatibus excepturi. Fugit
-                        harum hic modi ipsum! Ea asperiores sit animi
-                        dignissimos ad quidem quaerat minus a? Error expedita
-                        maiores deleniti iure fugit dolorem, necessitatibus
-                        earum, enim magni similique animi eum nesciunt totam
-                        officia, hic saepe repellendus at odit!
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: "primary.main" }}>
-                        <Link to="/" style={{ color: "inherit" }}>
-                            {t("blogblock.morelink")}
-                        </Link>
-                    </Typography>
-                    <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ textAlign: "right" }}
-                    >
-                        15.01.2000
-                    </Typography>
-                </NewsBlock>
+                <motion.div
+                    viewport={{ root: ref }}
+                    initial={{ height: "0px" }}
+                    whileInView={{ height: "auto" }}
+                    transition={{ type: "spring", duration: 1 }}
+                    style={{ gridColumn: "1/-1", overflow: "hidden", borderTop: "1px solid", borderBottom: "1px solid" }}
+                >
+                    <NewsBlock>
+                        <img src="https://picsum.photos/1000" alt="" />
+                        <Typography variant="h4" sx={{ color: "primary.main" }}>
+                            lorem ipsum
+                        </Typography>
+                        <Typography variant="body1">
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Iste impedit maxime necessitatibus excepturi.
+                            Fugit harum hic modi ipsum! Ea asperiores sit animi
+                            dignissimos ad quidem quaerat minus a? Error
+                            expedita maiores deleniti iure fugit dolorem,
+                            necessitatibus earum, enim magni similique animi eum
+                            nesciunt totam officia, hic saepe repellendus at
+                            odit!
+                        </Typography>
+                        <Typography
+                            variant="body1"
+                            sx={{ color: "primary.main" }}
+                        >
+                            <Link to="/" style={{ color: "inherit" }}>
+                                {t("blogblock.morelink")}
+                            </Link>
+                        </Typography>
+                        <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{ textAlign: "right" }}
+                        >
+                            15.01.2000
+                        </Typography>
+                    </NewsBlock>
+                </motion.div>
                 <Box
                     sx={{
                         gridColumn: "1/-1",
@@ -83,6 +98,7 @@ let MyContainer = styled(Container)`
     padding: 5rem;
     gap: 3rem;
     align-content: center;
+    align-items: center;
     color: ${({ theme }) => theme.palette.text.primary};
     height: 100%;
     @media (max-width: 768px) {
@@ -138,9 +154,6 @@ let Title = styled(Typography)`
 `;
 
 let NewsBlock = styled(Box)`
-    grid-column: 1/-1;
-    border-top: 2px solid ${({ theme }) => theme.palette.text.disabled};
-    border-bottom: 2px solid ${({ theme }) => theme.palette.text.disabled};
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 4rem 1fr 2rem 2rem;

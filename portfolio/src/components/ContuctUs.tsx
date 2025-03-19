@@ -9,56 +9,110 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Send } from "@mui/icons-material";
+import { motion } from "motion/react";
+import { useRef } from "react";
 
 const ContuctUs = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
+    let ref = useRef<HTMLDivElement>(document.querySelector("#root"));
     return (
         <Wrapper>
             <BG />
             <MyContainer>
-                <TitleBar>
-                    <Title variant="h3">{t("contuct.title")}</Title>
-                    <Typography variant="h6" textAlign="center">
-                        {t("contuct.description")}
-                    </Typography>
-                </TitleBar>
+                <motion.div
+                    style={{ gridColumn: "1/-1" }}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ root: ref }}
+                    transition={{ type: "spring" }}
+                >
+                    <TitleBar>
+                        <Title variant="h3">{t("contuct.title")}</Title>
+                        <Typography variant="h6" textAlign="center">
+                            {t("contuct.description")}
+                        </Typography>
+                    </TitleBar>
+                </motion.div>
                 <Form>
-                    <Typography
-                        variant={isTablet ? "h5" : "h3"}
-                        sx={{
-                            color: "primary.main",
-                            gridColumn: "1/-1",
-                            textAlign: "center",
-                            marginBottom: isTablet ? "0.5rem": '2rem',
-                            border: "2px solid",
-                            borderRadius: "1rem 0 1rem 0",
-                            justifySelf: "center",
-                            padding: "0 3rem",
-                        }}
+                    <motion.div
+                        style={{ gridColumn: "1/-1" }}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ root: ref }}
+                        transition={{ delay: 0.5, type: "spring" }}
                     >
-                        {t("contuct.text")}
-                    </Typography>
-                    <TextField label={t("contuct.name")} required />
-                    <TextField
-                        label={t("contuct.email")}
-                        type="email"
-                        required
-                    />
-                    <TextField
-                        label={t("contuct.message")}
-                        multiline
-                        rows={5}
-                        sx={{ gridColumn: "1/-1" }}
-                        required
-                    />
+                        <Typography
+                            variant={isTablet ? "h5" : "h3"}
+                            sx={{
+                                color: "primary.main",
+                                gridColumn: "1/-1",
+                                textAlign: "center",
+                                marginBottom: isTablet ? "0.5rem" : "2rem",
+                                border: "2px solid",
+                                borderRadius: "1rem 0 1rem 0",
+                                justifySelf: "center",
+                                padding: "0 3rem",
+                            }}
+                        >
+                            {t("contuct.text")}
+                        </Typography>
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ root: ref }}
+                        transition={{ delay: 0.6, type: "spring" }}
+                    >
+                        <TextField
+                            label={t("contuct.name")}
+                            required
+                            fullWidth
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ root: ref }}
+                        transition={{ delay: 0.7, type: "spring" }}
+                    >
+                        <TextField
+                            label={t("contuct.email")}
+                            type="email"
+                            required
+                            fullWidth
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ root: ref }}
+                        transition={{ delay: 0.8, type: "spring" }}
+                        style={{ gridColumn: "1/-1" }}
+                    >
+                        <TextField
+                            label={t("contuct.message")}
+                            multiline
+                            rows={5}
+                            required
+                            fullWidth
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ root: ref }}
+                        transition={{ delay: 0.9, type: "spring" }}
+                        style={{ gridColumn: "1/-1" }}
+                    >
                     <Button
+                        fullWidth
                         variant="contained"
-                        sx={{ gridColumn: "1/-1" }}
                         endIcon={<Send />}
                     >
                         {t("contuct.send")}
                     </Button>
+                    </motion.div>
                 </Form>
             </MyContainer>
         </Wrapper>

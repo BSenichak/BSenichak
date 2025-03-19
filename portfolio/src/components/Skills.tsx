@@ -7,14 +7,35 @@ import {
     IconButton,
     useMediaQuery,
 } from "@mui/material";
-import { SiTypescript, SiMongodb, SiRedux, SiCss3, SiHtml5, SiJavascript, SiReact } from "react-icons/si";
+import {
+    SiTypescript,
+    SiMongodb,
+    SiRedux,
+    SiCss3,
+    SiHtml5,
+    SiJavascript,
+    SiReact,
+} from "react-icons/si";
 import { GrMysql } from "react-icons/gr";
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 
 const Skills = () => {
     let theme = useTheme();
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
+    const rootRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        rootRef.current = document.getElementById("root") && null;
+    }, []);
+
+    let MotionProperties = {
+        transition: { type: "spring" },
+        viewport: { root: rootRef },
+        whileInView: { opacity: 1, x: 0, y: 0 },
+    };
     return (
         <Wrapper>
             <BG />
@@ -32,68 +53,201 @@ const Skills = () => {
                     >
                         &lt;/&gt;
                     </Tag>
-                    <Title variant={isTablet ? "h4" : "h3"}>{t("skills.title")}</Title>
-                    <Typography variant={isTablet ? "body1" : "h6"} textAlign="center">
+                    <Title variant={isTablet ? "h4" : "h3"}>
+                        {t("skills.title")}
+                    </Title>
+                    <Typography
+                        variant={isTablet ? "body1" : "h6"}
+                        textAlign="center"
+                    >
                         {t("skills.description")}
                     </Typography>
                 </TitleBar>
                 <SkillGrid>
-                    <SkillItem
-                        lightcolor="#e54f26"
-                        darkcolor="#983419"
-                        textcontent="HTML"
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiHtml5 size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#0c73b8"
-                        darkcolor="#07436b"
-                        textcontent="CSS"
+                        <SkillItem
+                            lightcolor="#e54f26"
+                            darkcolor="#983419"
+                            textcontent="HTML"
+                        >
+                            <SiHtml5
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiCss3 size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#e7a020"
-                        darkcolor="rgb(154, 107, 21)"
-                        textcontent="JavaScript"
+                        <SkillItem
+                            lightcolor="#0c73b8"
+                            darkcolor="#07436b"
+                            textcontent="CSS"
+                        >
+                            <SiCss3
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiJavascript size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#0076c9"
-                        darkcolor="#00497c"
-                        textcontent="TypeScript"
+                        <SkillItem
+                            lightcolor="#e7a020"
+                            darkcolor="rgb(154, 107, 21)"
+                            textcontent="JavaScript"
+                        >
+                            <SiJavascript
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiTypescript size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#28a9e0"
-                        darkcolor="#1a6f93"
-                        textcontent="React"
+                        <SkillItem
+                            lightcolor="#0076c9"
+                            darkcolor="#00497c"
+                            textcontent="TypeScript"
+                        >
+                            <SiTypescript
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiReact size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#f29418"
-                        darkcolor="#a56510"
-                        textcontent="MySQL"
+                        <SkillItem
+                            lightcolor="#28a9e0"
+                            darkcolor="#1a6f93"
+                            textcontent="React"
+                        >
+                            <SiReact
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <GrMysql size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#17ad55"
-                        darkcolor="#0c602f"
-                        textcontent="MongoDB"
+                        <SkillItem
+                            lightcolor="#f29418"
+                            darkcolor="#a56510"
+                            textcontent="MySQL"
+                        >
+                            <GrMysql
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiMongodb size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
-                    <SkillItem
-                        lightcolor="#7a50be"
-                        darkcolor="#482f71"
-                        textcontent="Redux"
+                        <SkillItem
+                            lightcolor="#17ad55"
+                            darkcolor="#0c602f"
+                            textcontent="MongoDB"
+                        >
+                            <SiMongodb
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
+                    <motion.div
+                        initial={{
+                            opacity: 0,
+                            x: Math.random() * 150 - 75,
+                            y: Math.random() * 150 - 75,
+                        }}
+                        {...MotionProperties}
                     >
-                        <SiRedux size={isTablet ? "2rem" : "5rem"} style={isTablet ? { padding: "0.3rem" } : { padding: "1rem" }} />
-                    </SkillItem>
+                        <SkillItem
+                            lightcolor="#7a50be"
+                            darkcolor="#482f71"
+                            textcontent="Redux"
+                        >
+                            <SiRedux
+                                size={isTablet ? "2rem" : "5rem"}
+                                style={
+                                    isTablet
+                                        ? { padding: "0.3rem" }
+                                        : { padding: "1rem" }
+                                }
+                            />
+                        </SkillItem>
+                    </motion.div>
                 </SkillGrid>
             </MyContainer>
         </Wrapper>
@@ -221,5 +375,4 @@ let SkillItem = styled(IconButton)<SkillItemProps>`
             font-size: 0.8rem;
         }
     }
-
 `;

@@ -19,6 +19,8 @@ import {
 } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
+import {  useRef } from "react";
 
 let slides = [
     {
@@ -63,13 +65,17 @@ const Works = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
     let isMobile = useMediaQuery("(max-width: 400px)");
+    let ref = useRef(document.querySelector("#root"));
     return (
         <Wrapper>
             <BG />
             <MyContainer>
                 <TitleBar>
                     <Title variant="h3">{t("works.title")}</Title>
-                    <Typography variant={isTablet ? "body1" : "h6"} textAlign={"center"}>
+                    <Typography
+                        variant={isTablet ? "body1" : "h6"}
+                        textAlign={"center"}
+                    >
                         {t("works.description")}
                     </Typography>
                 </TitleBar>
@@ -82,52 +88,60 @@ const Works = () => {
                         marginTop: "3rem",
                     }}
                 >
-                    <MySwiper
-                        modules={[
-                            Navigation,
-                            Pagination,
-                            Scrollbar,
-                            A11y,
-                            EffectCards,
-                        ]}
-                        spaceBetween={10}
-                        slidesPerView={isMobile ? 1: isTablet ? 2 : 3}
-                        navigation={true}
-                        pagination={{ clickable: true }}
-                        effect="cards"
+                    <motion.div viewport={{ root: ref }}
+                        initial={{ opacity: 0, filter: "blur(10px)" }}
+                        whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                        transition={{ duration: 1 }}
                     >
-                        {slides.map((slide, index) => (
-                            <SwiperSlide
-                                key={index}
-                                style={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <Card sx={{ width: "100%", height: "100%",}}>
-                                    <CardHeader
-                                        title={slide.title}
-                                        subheader={slide.subtitle}
-                                    />
-                                    <CardMedia
-                                        component="img"
-                                        height="200"
-                                        src={slide.image}
-                                        alt="Card image"
-                                    />
-                                    <CardContent>
-                                        <Typography
-                                            variant="body2"
-                                            color="text.secondary"
-                                        >
-                                            {slide.description}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </SwiperSlide>
-                        ))}
-                    </MySwiper>
+                        <MySwiper
+                            modules={[
+                                Navigation,
+                                Pagination,
+                                Scrollbar,
+                                A11y,
+                                EffectCards,
+                            ]}
+                            spaceBetween={10}
+                            slidesPerView={isMobile ? 1 : isTablet ? 2 : 3}
+                            navigation={true}
+                            pagination={{ clickable: true }}
+                            effect="cards"
+                        >
+                            {slides.map((slide, index) => (
+                                <SwiperSlide
+                                    key={index}
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Card
+                                        sx={{ width: "100%", height: "100%" }}
+                                    >
+                                        <CardHeader
+                                            title={slide.title}
+                                            subheader={slide.subtitle}
+                                        />
+                                        <CardMedia
+                                            component="img"
+                                            height="200"
+                                            src={slide.image}
+                                            alt="Card image"
+                                        />
+                                        <CardContent>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.secondary"
+                                            >
+                                                {slide.description}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </SwiperSlide>
+                            ))}
+                        </MySwiper>
+                    </motion.div>
                 </Box>
             </MyContainer>
         </Wrapper>
@@ -140,7 +154,6 @@ let Wrapper = styled(Box)`
     height: 100vh;
     position: relative;
     scroll-snap-align: start;
-    
 `;
 
 let BG = styled(Box)`
@@ -170,7 +183,6 @@ let MyContainer = styled(Container)`
         align-content: center;
     }
 `;
-
 
 let TitleBar = styled(Box)`
     display: flex;
@@ -219,5 +231,4 @@ let MySwiper = styled(Swiper)`
     width: 100%;
     height: 100%;
     --swiper-theme-color: ${({ theme }) => theme.palette.primary.main};
-
 `;

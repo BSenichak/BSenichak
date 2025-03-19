@@ -9,80 +9,104 @@ import {
     useMediaQuery,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 
 const AboutMe = () => {
     let theme = useTheme();
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
+    const rootRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        rootRef.current = document.getElementById("root") && null;
+    }, []);
     return (
         <Wrapper>
             <BG />
-            <MyContainer>
-                <Card
-                    sx={
-                        isTablet
-                            ? { gridColumn: "1/-1" }
-                            : { gridColumn: "1/5" }
-                    }
-                >
-                    <CardContent>
-                        <Typography
-                            variant="h3"
-                            sx={{ color: "primary.main", textAlign: "center" }}
-                        >
-                            {t("about.title")}
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <Img>
-                    <img src="react.gif" />
-                </Img>
-                <Card
-                    sx={
-                        isTablet
-                            ? { gridColumn: "1/-1" }
-                            : {
-                                  gridColumn: "1/8",
-                                  gridRow: "2/3",
-                                  alignSelf: "start",
-                              }
-                    }
-                >
-                    <CardContent>
-                        <Tag variant="body1">&lt;p&gt;</Tag>
-                        <Box sx={{ padding: "0 1rem" }}>
-                            <Typography variant={isTablet ? "h5" : "h4"} color="primary">
-                                Hello
+            <motion.div
+                initial={{ opacity: 0, y: 100, scale: 0.5 }}
+                transition={{ type: "spring" }}
+                style={{ height: "100%"}}
+                viewport={{ root: rootRef }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 100, scale: 0.5 }}
+            >
+                <MyContainer>
+                    <Card
+                        sx={
+                            isTablet
+                                ? { gridColumn: "1/-1" }
+                                : { gridColumn: "1/5" }
+                        }
+                    >
+                        <CardContent>
+                            <Typography
+                                variant="h3"
+                                sx={{
+                                    color: "primary.main",
+                                    textAlign: "center",
+                                }}
+                            >
+                                {t("about.title")}
                             </Typography>
-                            <Typography variant={isTablet ? "body1" : "body2"} >
-                                {t("about.description1")}
-                                <span
-                                    style={{
-                                        color: theme.palette.primary.main,
-                                    }}
+                        </CardContent>
+                    </Card>
+                    <Img>
+                        <img src="react.gif" />
+                    </Img>
+                    <Card
+                        sx={
+                            isTablet
+                                ? { gridColumn: "1/-1" }
+                                : {
+                                      gridColumn: "1/8",
+                                      gridRow: "2/3",
+                                      alignSelf: "start",
+                                  }
+                        }
+                    >
+                        <CardContent>
+                            <Tag variant="body1">&lt;p&gt;</Tag>
+                            <Box sx={{ padding: "0 1rem" }}>
+                                <Typography
+                                    variant={isTablet ? "h5" : "h4"}
+                                    color="primary"
                                 >
-                                    {" "}
-                                    {t("about.description2")}{" "}
-                                </span>
+                                    Hello
+                                </Typography>
+                                <Typography
+                                    variant={isTablet ? "body1" : "body2"}
+                                >
+                                    {t("about.description1")}
+                                    <span
+                                        style={{
+                                            color: theme.palette.primary.main,
+                                        }}
+                                    >
+                                        {" "}
+                                        {t("about.description2")}{" "}
+                                    </span>
 
-                                {t("about.description3")}
-                                <span
-                                    style={{
-                                        color: theme.palette.primary.main,
-                                    }}
-                                >
-                                    {" "}
-                                    React, ExpressJS, MySQl{" "}
-                                </span>
-                                {t("about.description4")}
-                                <br />
-                                {t("about.description5")}
-                            </Typography>
-                        </Box>
-                        <Tag variant="body1">&lt;/p&gt;</Tag>
-                    </CardContent>
-                </Card>
-            </MyContainer>
+                                    {t("about.description3")}
+                                    <span
+                                        style={{
+                                            color: theme.palette.primary.main,
+                                        }}
+                                    >
+                                        {" "}
+                                        React, ExpressJS, MySQl{" "}
+                                    </span>
+                                    {t("about.description4")}
+                                    <br />
+                                    {t("about.description5")}
+                                </Typography>
+                            </Box>
+                            <Tag variant="body1">&lt;/p&gt;</Tag>
+                        </CardContent>
+                    </Card>
+                </MyContainer>
+            </motion.div>
         </Wrapper>
     );
 };
