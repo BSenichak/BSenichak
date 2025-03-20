@@ -59,7 +59,7 @@ button:hover {
   min-width: 375px;
   overflow-x: hidden;
   overflow-y: scroll;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   position: fixed;
   inset: 0;

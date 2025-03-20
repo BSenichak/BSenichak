@@ -247,6 +247,7 @@ function Main() {
 export default Main;
 
 let MyContainer = styled(Container)`
+    scroll-snap-align: start;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 1fr 5fr 2fr;

@@ -122,7 +122,7 @@ const ContuctUs = () => {
 export default ContuctUs;
 
 let Wrapper = styled(Box)`
-    height: 100vh;
+    height: 90vh;
     position: relative;
     scroll-snap-align: start;
 `;
