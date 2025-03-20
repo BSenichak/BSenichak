@@ -27,8 +27,8 @@ const BlogBlock = () => {
                 </TitleBar>
                 <motion.div
                     viewport={{ root: ref }}
-                    initial={{ height: "0px" }}
-                    whileInView={{ height: "auto" }}
+                    initial={{ scaleY: 0 }}
+                    whileInView={{ scaleY: 1 }}
                     transition={{ type: "spring", duration: 1 }}
                     style={{ gridColumn: "1/-1", overflow: "hidden", borderTop: "1px solid", borderBottom: "1px solid" }}
                 >
