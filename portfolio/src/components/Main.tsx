@@ -94,7 +94,7 @@ function Main() {
                                     {t("main.workTime")}
                                 </ListItemText>
                             </ListItemButton>
-                            <ListItemButton>
+                            <ListItemButton href="https://bsenichak.vercel.app/">
                                 <ListItemIcon>
                                     <Language color="primary" />
                                 </ListItemIcon>
@@ -143,7 +143,7 @@ function Main() {
                     <CardActions>
                         <Button
                             variant="outlined"
-                            href={"https://t.me/Artur_Demidov"}
+                            href={"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
                             fullWidth
                             endIcon={<Download />}
                         >
