@@ -51,5 +51,8 @@
     "name": "Your name",
     "email": "Your email",
     "message": "Your message"
+  },
+  "notfound": {
+    "title": "Page not found"
   }
 }

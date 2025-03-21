@@ -11,6 +11,7 @@ import ContuctUs from "./components/ContuctUs";
 import Footer from "./components/Footer";
 import { Route, Routes } from "react-router";
 import { motion } from "motion/react";
+import NotFound from "./components/NotFound";
 
 function App() {
     let theme: MuiTheme = useTheme();
@@ -69,6 +70,7 @@ function App() {
                                 </>
                             }
                         />
+                        <Route path="/*" element={<NotFound />} />
                     </Routes>
                     <Footer />
                 </>
