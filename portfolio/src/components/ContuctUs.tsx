@@ -6,15 +6,23 @@ import {
     TextField,
     Button,
     useMediaQuery,
+    Tooltip,
+    Alert,
+    Snackbar,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { Send } from "@mui/icons-material";
 import { motion } from "motion/react";
 import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
+import { addMessage, Message, setStatus } from "../store/firebaseReducer";
 
 const ContuctUs = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
+    let dispatch = useDispatch<AppDispatch>()
+    let status = useSelector<RootState, string | null >((state) => state.fb.status);
     let ref = useRef<HTMLDivElement>(document.querySelector("#root"));
     return (
         <Wrapper>
@@ -34,7 +42,18 @@ const ContuctUs = () => {
                         </Typography>
                     </TitleBar>
                 </motion.div>
-                <Form>
+                <Form onSubmit={(e : React.FormEvent<HTMLFormElement>) => {
+                    e.preventDefault();
+                    let data = new FormData(e.currentTarget);
+                    (e.target as HTMLFormElement).reset()
+                    let body: Message = {
+                        name: data.get("name") as string || "",
+                        email: data.get("email") as string || "",
+                        message: data.get("message") as string || "",
+                    }
+                    dispatch(addMessage(body))
+                    
+                }}>
                     <motion.div
                         style={{ gridColumn: "1/-1" }}
                         initial={{ opacity: 0, scale: 0.5 }}
@@ -67,6 +86,7 @@ const ContuctUs = () => {
                         <TextField
                             label={t("contuct.name")}
                             required
+                            name="name"
                             fullWidth
                         />
                     </motion.div>
@@ -79,6 +99,7 @@ const ContuctUs = () => {
                         <TextField
                             label={t("contuct.email")}
                             type="email"
+                            name="email"
                             required
                             fullWidth
                         />
@@ -95,6 +116,7 @@ const ContuctUs = () => {
                             multiline
                             rows={5}
                             required
+                            name="message"
                             fullWidth
                         />
                     </motion.div>
@@ -109,12 +131,16 @@ const ContuctUs = () => {
                         fullWidth
                         variant="contained"
                         endIcon={<Send />}
+                        type="submit"
                     >
                         {t("contuct.send")}
                     </Button>
                     </motion.div>
                 </Form>
             </MyContainer>
+            <Snackbar open={!!status} autoHideDuration={6000} onClose={() => dispatch(setStatus(null))}>
+                <Alert severity="info">{status}</Alert>
+            </Snackbar>
         </Wrapper>
     );
 };

@@ -7,12 +7,9 @@ import { BrowserRouter } from "react-router";
 import { ThemeProvider } from "@mui/material";
 import { lightTheme, darkTheme } from "./styles/muiThemes.ts";
 import "./i18n.ts";
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { app } from "./firebase.ts";
 
-gsap.registerPlugin(useGSAP);
-gsap.registerPlugin(ScrollTrigger);
+app;
 
 createRoot(document.getElementById("root")!).render(
     <Provider store={store}>

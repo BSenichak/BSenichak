@@ -20,7 +20,10 @@ import {
 import "swiper/swiper-bundle.css";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
-import {  useRef } from "react";
+import {  useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
+import { addMessage, getAllWorks, Work } from "../store/firebaseReducer";
 
 let slides = [
     {
@@ -66,6 +69,11 @@ const Works = () => {
     let isTablet = useMediaQuery("(max-width: 768px)");
     let isMobile = useMediaQuery("(max-width: 400px)");
     let ref = useRef(document.querySelector("#root"));
+    let dispatch = useDispatch<AppDispatch>();
+    useEffect(() => {
+        dispatch(getAllWorks());
+    }, [])
+    let works: Work[] = useSelector<RootState, Work[]>((state) => state.fb.works);
     return (
         <Wrapper>
             <BG />
@@ -107,7 +115,7 @@ const Works = () => {
                             pagination={{ clickable: true }}
                             effect="cards"
                         >
-                            {slides.map((slide, index) => (
+                            {works && works.map((slide, index) => (
                                 <SwiperSlide
                                     key={index}
                                     style={{
@@ -126,7 +134,7 @@ const Works = () => {
                                         <CardMedia
                                             component="img"
                                             height="200"
-                                            src={slide.image}
+                                            src={slide.img}
                                             alt="Card image"
                                         />
                                         <CardContent>
