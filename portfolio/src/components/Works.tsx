@@ -20,49 +20,11 @@ import {
 import "swiper/swiper-bundle.css";
 import { useTranslation } from "react-i18next";
 import { motion } from "motion/react";
-import {  useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
-import { addMessage, getAllWorks, Work } from "../store/firebaseReducer";
+import { getAllWorks, Work } from "../store/firebaseReducer";
 
-let slides = [
-    {
-        title: "Card title",
-        subtitle: "Card subtitle",
-        image: "https://picsum.photos/1000",
-        description: "Card description",
-    },
-    {
-        title: "Card title",
-        subtitle: "Card subtitle",
-        image: "https://picsum.photos/1000",
-        description: "Card description",
-    },
-    {
-        title: "Card title",
-        subtitle: "Card subtitle",
-        image: "https://picsum.photos/1000",
-        description: "Card description",
-    },
-    {
-        title: "Card title",
-        subtitle: "Card subtitle",
-        image: "https://picsum.photos/1000",
-        description: "Card description",
-    },
-    {
-        title: "Card title",
-        subtitle: "Card subtitle",
-        image: "https://picsum.photos/1000",
-        description: "Card description",
-    },
-    {
-        title: "Card title",
-        subtitle: "Card subtitle",
-        image: "https://picsum.photos/1000",
-        description: "Card description",
-    },
-];
 
 const Works = () => {
     let { t } = useTranslation();
@@ -72,8 +34,10 @@ const Works = () => {
     let dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         dispatch(getAllWorks());
-    }, [])
-    let works: Work[] = useSelector<RootState, Work[]>((state) => state.fb.works);
+    }, []);
+    let works: Work[] = useSelector<RootState, Work[]>(
+        (state) => state.fb.works
+    );
     return (
         <Wrapper>
             <BG />
@@ -96,7 +60,8 @@ const Works = () => {
                         marginTop: "3rem",
                     }}
                 >
-                    <motion.div viewport={{ root: ref }}
+                    <motion.div
+                        viewport={{ root: ref }}
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         whileInView={{ opacity: 1, filter: "blur(0px)" }}
                         transition={{ duration: 1 }}
@@ -115,39 +80,43 @@ const Works = () => {
                             pagination={{ clickable: true }}
                             effect="cards"
                         >
-                            {works && works.map((slide, index) => (
-                                <SwiperSlide
-                                    key={index}
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Card
-                                        sx={{ width: "100%", height: "100%" }}
+                            {works &&
+                                works.map((slide, index) => (
+                                    <SwiperSlide
+                                        key={index}
+                                        style={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
                                     >
-                                        <CardHeader
-                                            title={slide.title}
-                                            subheader={slide.subtitle}
-                                        />
-                                        <CardMedia
-                                            component="img"
-                                            height="200"
-                                            src={slide.img}
-                                            alt="Card image"
-                                        />
-                                        <CardContent>
-                                            <Typography
-                                                variant="body2"
-                                                color="text.secondary"
-                                            >
-                                                {slide.description}
-                                            </Typography>
-                                        </CardContent>
-                                    </Card>
-                                </SwiperSlide>
-                            ))}
+                                        <Card
+                                            sx={{
+                                                width: "100%",
+                                                height: "100%",
+                                            }}
+                                        >
+                                            <CardHeader
+                                                title={slide.title}
+                                                subheader={slide.subtitle}
+                                            />
+                                            <CardMedia
+                                                component="img"
+                                                height="200"
+                                                src={slide.img}
+                                                alt="Card image"
+                                            />
+                                            <CardContent>
+                                                <Typography
+                                                    variant="body2"
+                                                    color="text.secondary"
+                                                >
+                                                    {slide.description}
+                                                </Typography>
+                                            </CardContent>
+                                        </Card>
+                                    </SwiperSlide>
+                                ))}
                         </MySwiper>
                     </motion.div>
                 </Box>

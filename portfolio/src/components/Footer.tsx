@@ -1,10 +1,6 @@
 import {
     Box,
     Container,
-    Divider,
-    FormControl,
-    MenuItem,
-    Select,
     styled,
     Typography,
 } from "@mui/material";
@@ -12,28 +8,12 @@ import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import { LinkedIn, GitHub } from "@mui/icons-material";
 import { TbBrandFiverr } from "react-icons/tb";
-import ThemeSwitch from "./ThemeSwitch";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store/store";
-import { useEffect } from "react";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 
-interface SelectorProps {
-    theme: string;
-    language: string;
-}
+
 
 export default function Footer() {
-    const { t, i18n } = useTranslation();
-    let { theme, language }: SelectorProps = useSelector(
-        (state: RootState) => state.root
-    );
-    let dispatch: AppDispatch = useDispatch();
-    useEffect(() => {
-        dispatch({ type: "root/loadTheme" });
-        dispatch({ type: "root/loadLanguage" });
-        i18n.changeLanguage(language);
-    }, [language]);
+    const { t } = useTranslation();
     return (
         <Wrapper>
             <NavBar>
@@ -106,32 +86,3 @@ let Link = styled(NavLink)`
     }
 `;
 
-let Logo = styled("img")`
-    height: 2rem;
-    color: ${({ theme }) => theme.palette.primary.main};
-    @media (max-width: 600px) {
-        height: 4rem;
-    }
-`;
-
-let LogoBar = styled(Box)`
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    & h5 {
-        @media (max-width: 600px) {
-            font-size: 3rem;
-        }
-    }
-`;
-
-let MySelect = styled(Select)`
-    background-color: transparent;
-    color: inherit;
-    & fieldset {
-        border-color: transparent;
-    }
-    & .MuiOutlinedInput-root:hover {
-        border: none;
-    }
-`;

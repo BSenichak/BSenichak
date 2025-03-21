@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import root from "./rootReducer";
 import fb from "./firebaseReducer";
-import logger from "redux-logger";
+// import logger from "redux-logger";
 
 export const store = configureStore({
     reducer: {
