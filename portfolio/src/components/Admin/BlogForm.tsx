@@ -106,9 +106,11 @@ export default function BlogForm() {
                         setOpen(false);
                         data.img = await blobToBase64(data.img);
                         if (!isUpdate) {
+                            data.date = new Date().toLocaleDateString()
                             dispatch(addPost(data));
                         } else {
                             data.id = activePostId;
+                            data.date = new Date().toLocaleDateString()
                             dispatch(updatePost(data));
                         }
                     })}

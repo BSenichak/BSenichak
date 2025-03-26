@@ -10,6 +10,8 @@ import {
     DialogTitle,
     DialogContent,
     IconButton,
+    CardActions,
+    DialogActions,
 } from "@mui/material";
 import { useNavigate, useSearchParams } from "react-router";
 import Masonry from "@mui/lab/Masonry";
@@ -47,6 +49,9 @@ export default function Blog() {
                                 {post.description.slice(0, 200)}
                                 {post.description.length > 200 && "..."}
                             </CardContent>
+                            <CardActions sx={{ justifyContent: "end" }}>
+                                <Typography variant="body2" color="text.secondary">{post.date}</Typography>
+                            </CardActions>
                         </Card>
                     );
                 })}
@@ -73,8 +78,10 @@ export default function Blog() {
                         />
                     )}
                     <Typography variant="body1">{posts.find((post) => post.id === postId)?.description}</Typography>
-                    
                 </DialogContent>
+                <DialogActions>
+                    <Typography variant="body2" color="text.secondary">{posts.find((post) => post.id === postId)?.date}</Typography>
+                </DialogActions>
             </Dialog>
         </Wrapper>
     );
