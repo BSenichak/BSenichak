@@ -12,6 +12,7 @@ import {
     IconButton,
     CardActions,
     DialogActions,
+    useMediaQuery,
 } from "@mui/material";
 import { useNavigate, useSearchParams } from "react-router";
 import Masonry from "@mui/lab/Masonry";
@@ -31,11 +32,13 @@ export default function Blog() {
     useEffect(() => {
         dispatch(getBlogPosts());
     }, []);
+    let istablet = useMediaQuery("(max-width: 768px)");
+    let isMobile = useMediaQuery("(max-width: 600px)");
     return (
         <Wrapper>
             <Typography variant="h3">{"Posts"}</Typography>
 
-            <Masonry columns={3} spacing={2}>
+            <Masonry columns={isMobile ? 1 : istablet ? 2 : 3} spacing={2}>
                 {posts.map((post) => {
                     return (
                         <Card
