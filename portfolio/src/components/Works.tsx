@@ -93,15 +93,22 @@ const Works = () => {
                                             sx={{
                                                 width: "100%",
                                                 height: "100%",
+                                                maxHeight: "50vh",
                                             }}
                                         >
                                             <CardHeader
                                                 title={slide.title}
                                                 subheader={slide.subtitle}
+                                                titleTypographyProps={{
+                                                    variant: isTablet ? "body1" : "h5",
+                                                }}
+                                                subheaderTypographyProps={{
+                                                    variant: "body2",
+                                                }}
                                             />
                                             <CardMedia
                                                 component="img"
-                                                height="200"
+                                               height={200}
                                                 src={slide.img}
                                                 alt="Card image"
                                             />
