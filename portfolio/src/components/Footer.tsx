@@ -1,16 +1,9 @@
-import {
-    Box,
-    Container,
-    styled,
-    Typography,
-} from "@mui/material";
+import { Box, Container, styled, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router";
 import { LinkedIn, GitHub } from "@mui/icons-material";
 import { TbBrandFiverr } from "react-icons/tb";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-
-
 
 export default function Footer() {
     const { t } = useTranslation();
@@ -18,8 +11,12 @@ export default function Footer() {
         <Wrapper>
             <NavBar>
                 <Typography variant="body1">
-                    &copy; {new Date().getFullYear()} BSenichak. All rights
-                    reserved
+                    <Link
+                        to="/adminsss"
+                        style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                        &copy; {new Date().getFullYear()} BSenichak. All rights reserved
+                    </Link>
                 </Typography>
                 <Links>
                     <Link to="/">{t("home.title")}</Link>
@@ -85,4 +82,3 @@ let Link = styled(NavLink)`
         }
     }
 `;
-

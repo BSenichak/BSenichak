@@ -37,7 +37,7 @@ export default function Header() {
     return (
         <Wrapper>
             <NavBar>
-                <LogoBar>
+                <LogoBar to="/">
                     <Logo
                         src={theme == "light" ? "/1.svg" : "/2.svg"}
                         alt="BSenichak"
@@ -58,10 +58,7 @@ export default function Header() {
                         <GitHub />
                         <span>GitHub</span>
                     </Link>
-                    <Link
-                        to="https://www.fiverr.com/s/e65Radk"
-                        target="_blank"
-                    >
+                    <Link to="https://www.fiverr.com/s/e65Radk" target="_blank">
                         <TbBrandFiverr />
                         <span>Fiverr</span>
                     </Link>
@@ -154,13 +151,19 @@ let Logo = styled("img")`
     }
 `;
 
-let LogoBar = styled(Box)`
+let LogoBar = styled(Link)`
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.3rem;
+    text-decoration: none !important;
+    &:hover {
+        text-decoration: none !important;
+    }
     & h5 {
         @media (max-width: 600px) {
             font-size: 3rem;
+            text-decoration: none;
         }
     }
 `;
@@ -170,7 +173,7 @@ let MySelect = styled(Select)`
     color: inherit;
     & fieldset {
         border-color: transparent;
-    } 
+    }
     & .MuiOutlinedInput-root:hover {
         border: none;
     }
