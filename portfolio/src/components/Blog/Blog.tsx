@@ -92,7 +92,6 @@ export default function Blog() {
 
 let Wrapper = styled(Container)`
     color: ${({ theme }) => theme.palette.text.primary};
-    scroll-snap-align: start;
 `;
 let PostImg = styled("img")`
     width: 100%;
