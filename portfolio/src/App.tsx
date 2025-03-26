@@ -13,6 +13,7 @@ import { Route, Routes } from "react-router";
 import { motion } from "motion/react";
 import NotFound from "./components/NotFound";
 import Admin from "./components/Admin/Admin";
+import Blog from "./components/Blog/Blog";
 
 function App() {
     let theme: MuiTheme = useTheme();
@@ -72,6 +73,7 @@ function App() {
                             }
                         />
                         <Route path="/adminsss" element={<Admin />} />
+                        <Route path="/blog" element={<Blog />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
                     <Footer />

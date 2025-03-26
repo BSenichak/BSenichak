@@ -4,6 +4,7 @@ import WorksForm from "./WorksForm";
 import Messages from "./Messages";
 import { useState } from "react";
 import AuthForm from "./AuthForm";
+import BlogForm from "./BlogForm";
 
 function Admin() {
     let [isAuth, setIsAuth] = useState<boolean>(false);
@@ -13,6 +14,7 @@ function Admin() {
                 <>
                     <WorksForm />
                     <Messages />
+                    <BlogForm />
                 </>
             ) : (
                 <AuthForm setIsAuth={setIsAuth} />

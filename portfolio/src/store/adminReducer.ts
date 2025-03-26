@@ -2,12 +2,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { db } from "../firebase";
 import { collection, query, getDocs } from "firebase/firestore";
 import { doc, updateDoc, setDoc, deleteDoc } from "firebase/firestore";
+import { BlogPost } from "./firebaseReducer";
 
 interface AdminState {
     loading: boolean;
     works: Work[];
     message: string;
     messages: Message[];
+    blogPosts: BlogPost[];
 }
 
 const initialState: AdminState = {
@@ -15,6 +17,7 @@ const initialState: AdminState = {
     works: [],
     message: "",
     messages: [],
+    blogPosts: [],
 };
 
 let adminSlice = createSlice({
@@ -96,6 +99,54 @@ let adminSlice = createSlice({
                 state.loading = true;
             })
             .addCase(deleteMessage.rejected, (state, action) => {
+                state.loading = false;
+                state.message = action.error.message || "";
+            });
+        builder
+            .addCase(getBlogPosts.fulfilled, (state, action) => {
+                state.loading = false;
+                state.blogPosts = action.payload;
+            })
+            .addCase(getBlogPosts.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(getBlogPosts.rejected, (state, action) => {
+                state.loading = false;
+                state.message = action.error.message || "";
+            });
+        builder
+            .addCase(addPost.fulfilled, (state) => {
+                state.loading = false;
+                state.message = "Post has been added";
+            })
+            .addCase(addPost.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(addPost.rejected, (state, action) => {
+                state.loading = false;
+                state.message = action.error.message || "";
+            });
+        builder
+            .addCase(deletePost.fulfilled, (state) => {
+                state.loading = false;
+                state.message = "POst has been deleted";
+            })
+            .addCase(deletePost.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(deletePost.rejected, (state, action) => {
+                state.loading = false;
+                state.message = action.error.message || "";
+            });
+        builder
+            .addCase(updatePost.fulfilled, (state) => {
+                state.loading = false;
+                state.message = "Work has been updated";
+            })
+            .addCase(updatePost.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(updatePost.rejected, (state, action) => {
                 state.loading = false;
                 state.message = action.error.message || "";
             });
@@ -186,6 +237,54 @@ export const deleteMessage = createAsyncThunk(
     async (id: string, { dispatch }) => {
         const docRef = await deleteDoc(doc(db, "messages", id));
         await dispatch(getAllMessages());
+        return docRef;
+    }
+);
+
+export const getBlogPosts = createAsyncThunk(
+    "firebase/getBlogPosts",
+    async () => {
+        const q = query(collection(db, "blog"));
+        const querySnapshot = await getDocs(q);
+        let posts = querySnapshot.docs.map((doc) => {
+            let post = doc.data() as BlogPost;
+            post.id = doc.id;
+            return post;
+        });
+        return posts;
+    }
+);
+
+export const addPost = createAsyncThunk(
+    "firebase/addPost",
+    async (data: any, { dispatch }) => {
+        const docRef = await setDoc(
+            doc(db, "blog", new Date().getTime().toString()),
+            {
+                ...data,
+            }
+        );
+        await dispatch(getBlogPosts());
+        return docRef;
+    }
+);
+
+export const updatePost = createAsyncThunk(
+    "firebase/updatePost",
+    async (data: Work | any, { dispatch }) => {
+        let { id, ...body } = data;
+        const docRef = doc(db, "blog", id as string);
+        await updateDoc(docRef, body);
+        await dispatch(getBlogPosts());
+        return data;
+    }
+);
+
+export const deletePost = createAsyncThunk(
+    "firebase/deletePost",
+    async (id: string, { dispatch }) => {
+        const docRef = await deleteDoc(doc(db, "blog", id));
+        await dispatch(getBlogPosts());
         return docRef;
     }
 );

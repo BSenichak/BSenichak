@@ -9,7 +9,7 @@ import {
     Typography,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router";
+import { NavLink, useLocation } from "react-router";
 import { LinkedIn, GitHub } from "@mui/icons-material";
 import { TbBrandFiverr } from "react-icons/tb";
 import ThemeSwitch from "./ThemeSwitch";
@@ -34,8 +34,9 @@ export default function Header() {
         dispatch({ type: "root/loadLanguage" });
         i18n.changeLanguage(language);
     }, [language]);
+    let link: string = useLocation().pathname;
     return (
-        <Wrapper>
+        <Wrapper link={link}>
             <NavBar>
                 <LogoBar to="/">
                     <Logo
@@ -103,7 +104,8 @@ let Wrapper = styled(Box)`
     padding: 1rem;
     background-color: transparent;
     background-image: none;
-    scroll-snap-align: start;
+    scroll-snap-align: ${({ link }: { link: string }) =>
+        link == "/" ? "start" : "none"};
 `;
 
 let NavBar = styled(Container)`

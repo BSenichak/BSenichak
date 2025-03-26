@@ -1,7 +1,6 @@
 import {
     Button,
     Card,
-    CardActions,
     CardHeader,
     Divider,
     List,
@@ -50,17 +49,6 @@ export default function Messages() {
                 })}
             </List>
             <Divider />
-            <CardActions sx={{ justifyContent: "flex-end" }}>
-                <Button
-                    color="primary"
-                    variant="contained"
-                    onClick={() => {
-                        setOpen(true);
-                    }}
-                >
-                    Add
-                </Button>
-            </CardActions>
             <Dialog
                 open={open}
                 onClose={() => {

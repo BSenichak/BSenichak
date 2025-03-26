@@ -10,12 +10,22 @@ import { useTranslation } from "react-i18next";
 import { IoMdLink } from "react-icons/io";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store/store";
+import { BlogPost, getRandomBlogPost } from "../store/firebaseReducer";
 
 const BlogBlock = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
     let ref = useRef<HTMLDivElement>(document.querySelector("#root"));
+    let dispatch = useDispatch<AppDispatch>();
+    let randomBlogPost = useSelector<RootState, BlogPost | null>(
+        (state) => state.fb.randomBlogPost
+    );
+    useEffect(() => {
+        dispatch(getRandomBlogPost());
+    }, []);
     return (
         <Wrapper>
             <MyContainer>
@@ -30,38 +40,45 @@ const BlogBlock = () => {
                     initial={{ scaleY: 0 }}
                     whileInView={{ scaleY: 1 }}
                     transition={{ type: "spring", duration: 1 }}
-                    style={{ gridColumn: "1/-1", overflow: "hidden", borderTop: "1px solid", borderBottom: "1px solid" }}
+                    style={{
+                        gridColumn: "1/-1",
+                        overflow: "hidden",
+                        borderTop: "1px solid",
+                        borderBottom: "1px solid",
+                    }}
                 >
                     <NewsBlock>
-                        <img src="https://picsum.photos/1000" alt="" />
-                        <Typography variant="h4" sx={{ color: "primary.main" }}>
-                            lorem ipsum
-                        </Typography>
-                        <Typography variant="body1">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Iste impedit maxime necessitatibus excepturi.
-                            Fugit harum hic modi ipsum! Ea asperiores sit animi
-                            dignissimos ad quidem quaerat minus a? Error
-                            expedita maiores deleniti iure fugit dolorem,
-                            necessitatibus earum, enim magni similique animi eum
-                            nesciunt totam officia, hic saepe repellendus at
-                            odit!
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            sx={{ color: "primary.main" }}
-                        >
-                            <Link to="/" style={{ color: "inherit" }}>
-                                {t("blogblock.morelink")}
-                            </Link>
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            color="text.secondary"
-                            sx={{ textAlign: "right" }}
-                        >
-                            15.01.2000
-                        </Typography>
+                        <img src={randomBlogPost?.img} alt="" />
+                        <Box display={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+                            <Typography
+                                variant="h4"
+                                sx={{ color: "primary.main" }}
+                            >
+                                {randomBlogPost?.title}
+                            </Typography>
+                            <Typography variant="body1">
+                                {randomBlogPost?.description.slice(0, 300)}
+                                ...
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                sx={{ color: "primary.main" }}
+                            >
+                                <Link
+                                    to={"/blog?id=" + randomBlogPost?.id}
+                                    style={{ color: "inherit" }}
+                                >
+                                    {t("blogblock.morelink")}
+                                </Link>
+                            </Typography>
+                            <Typography
+                                variant="body2"
+                                color="text.secondary"
+                                sx={{ textAlign: "right" }}
+                            >
+                                {randomBlogPost?.date}
+                            </Typography>
+                        </Box>
                     </NewsBlock>
                 </motion.div>
                 <Box
@@ -74,6 +91,8 @@ const BlogBlock = () => {
                     <Button
                         variant="contained"
                         endIcon={<IoMdLink size={25} />}
+                        component={Link}
+                        to="/blog"
                     >
                         {t("blogblock.readmore")}
                     </Button>
@@ -156,16 +175,17 @@ let Title = styled(Typography)`
 let NewsBlock = styled(Box)`
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: 4rem 1fr 2rem 2rem;
-    padding: 3rem 0;
-    padding-right: 3rem;
+    /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+    max-height: 400px;
+    align-items: start;
+    gap: 3rem;
+    padding: 3rem;
     & img {
+        display: block;
         grid-row: 1/-1;
-        grid-column: 1/2;
         object-fit: cover;
         width: 100%;
-        height: 100%;
-        padding: 0 3rem;
+        height: 300px;
     }
 
     @media (max-width: 768px) {
