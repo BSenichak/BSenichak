@@ -1,15 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import root from "./rootReducer";
 import fb from "./firebaseReducer";
-// import logger from "redux-logger";
+import logger from "redux-logger";
+import admin from "./adminReducer";
 
 export const store = configureStore({
     reducer: {
         root,
-        fb
+        fb,
+        admin
     },
     devTools: true,
-    // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 

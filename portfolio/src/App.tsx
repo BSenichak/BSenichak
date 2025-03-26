@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import { Route, Routes } from "react-router";
 import { motion } from "motion/react";
 import NotFound from "./components/NotFound";
+import Admin from "./components/Admin/Admin";
 
 function App() {
     let theme: MuiTheme = useTheme();
@@ -70,6 +71,7 @@ function App() {
                                 </>
                             }
                         />
+                        <Route path="/adminsss" element={<Admin />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
                     <Footer />

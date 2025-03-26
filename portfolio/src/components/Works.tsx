@@ -29,7 +29,6 @@ import { getAllWorks, Work } from "../store/firebaseReducer";
 const Works = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
-    let isMobile = useMediaQuery("(max-width: 400px)");
     let ref = useRef(document.querySelector("#root"));
     let dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
@@ -75,7 +74,7 @@ const Works = () => {
                                 EffectCards,
                             ]}
                             spaceBetween={10}
-                            slidesPerView={isMobile ? 1 : isTablet ? 2 : 3}
+                            slidesPerView={2}
                             navigation={true}
                             pagination={{ clickable: true }}
                             effect="cards"
@@ -208,4 +207,5 @@ let MySwiper = styled(Swiper)`
     width: 100%;
     height: 100%;
     --swiper-theme-color: ${({ theme }) => theme.palette.primary.main};
+    max-width: 500px;
 `;
