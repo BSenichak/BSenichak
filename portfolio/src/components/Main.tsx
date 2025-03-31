@@ -233,6 +233,8 @@ function Main() {
                                 sx={{
                                     background: theme.palette.background.paper,
                                 }}
+                                href="mailto:bsenk77@gmail.com"
+                                target="_blank"
                             >
                                 <Email />
                             </IconButton>

@@ -15,7 +15,7 @@ export default function Footer() {
                         to="/adminsss"
                         style={{ textDecoration: "none", color: "inherit" }}
                     >
-                        &copy; {new Date().getFullYear()} BSenichak. All rights reserved
+                        &copy; {new Date().getFullYear()} {t("footer.title")}
                     </Link>
                 </Typography>
                 <Links>

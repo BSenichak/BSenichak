@@ -25,7 +25,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store/store";
 import { getAllWorks, Work } from "../store/firebaseReducer";
 
-
 const Works = () => {
     let { t } = useTranslation();
     let isTablet = useMediaQuery("(max-width: 768px)");
@@ -61,9 +60,9 @@ const Works = () => {
                 >
                     <motion.div
                         viewport={{ root: ref }}
-                        initial={{ opacity: 0, filter: "blur(10px)" }}
-                        whileInView={{ opacity: 1, filter: "blur(0px)" }}
-                        transition={{ duration: 1 }}
+                        initial={{ transform: "scale(0.5)", opacity: 0 }}
+                        whileInView={{ transform: "scale(1)", opacity: 1 }}
+                        transition={{ duration: 0.5, type: "spring" }}
                     >
                         <MySwiper
                             modules={[
@@ -74,7 +73,7 @@ const Works = () => {
                                 EffectCards,
                             ]}
                             spaceBetween={10}
-                            slidesPerView={2}
+                            slidesPerView={1}
                             navigation={true}
                             pagination={{ clickable: true }}
                             effect="cards"
@@ -93,14 +92,15 @@ const Works = () => {
                                             sx={{
                                                 width: "100%",
                                                 height: "100%",
-                                                maxHeight: "50vh",
                                             }}
                                         >
                                             <CardHeader
                                                 title={slide.title}
                                                 subheader={slide.subtitle}
                                                 titleTypographyProps={{
-                                                    variant: isTablet ? "body1" : "h5",
+                                                    variant: isTablet
+                                                        ? "body1"
+                                                        : "h5",
                                                 }}
                                                 subheaderTypographyProps={{
                                                     variant: "body2",
@@ -108,7 +108,7 @@ const Works = () => {
                                             />
                                             <CardMedia
                                                 component="img"
-                                               height={200}
+                                                height={200}
                                                 src={slide.img}
                                                 alt="Card image"
                                             />
@@ -154,7 +154,8 @@ let BG = styled(Box)`
 let MyContainer = styled(Container)`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 100px 400px;
+    grid-template-rows: 1fr 3fr;
+    align-items: center;
     padding: 5rem;
     gap: 1rem;
     align-content: center;

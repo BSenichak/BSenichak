@@ -54,5 +54,11 @@
   },
   "notfound": {
     "title": "Page not found"
+  },
+  "footer": {
+    "title": " BSenichak. All rights reserved"
+  },
+  "blog": {
+    "title": "My blog"
   }
 }

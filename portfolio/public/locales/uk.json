@@ -54,5 +54,11 @@
   },
   "notfound": {
     "title": "Сторінка не знайдена"
+  },
+  "footer": {
+    "title": "Bsenichak. \nВсі права захищені"
+  },
+  "blog": {
+    "title": "Мій блог"
   }
 }
