@@ -19,6 +19,8 @@ body {
 }
 
 main {
+    max-width: 1024px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 3fr;
     min-height: 100vh;
