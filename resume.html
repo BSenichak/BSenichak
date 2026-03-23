@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bohdan Senichak - Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 10pt;
+      line-height: 1.45;
+      color: #1a1a2e;
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 36px 40px;
+    }
+
+    .header {
+      text-align: center;
+      padding-bottom: 18px;
+      border-bottom: 2.5px solid #2563eb;
+      margin-bottom: 18px;
+    }
+
+    .header h1 {
+      font-size: 24pt;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: -0.3px;
+      margin-bottom: 2px;
+    }
+
+    .header .title {
+      font-size: 11pt;
+      color: #2563eb;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .header .tagline {
+      font-size: 9pt;
+      color: #64748b;
+      margin-bottom: 10px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .header .contact {
+      font-size: 9pt;
+      color: #64748b;
+    }
+
+    .header .contact a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    .header .contact span {
+      margin: 0 6px;
+    }
+
+    .section {
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 9pt;
+      font-weight: 600;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .summary {
+      color: #475569;
+      font-size: 9.5pt;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 28px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+    }
+
+    .skill-category {
+      margin-bottom: 2px;
+    }
+
+    .skill-category strong {
+      color: #1e293b;
+      font-size: 9pt;
+    }
+
+    .skill-category span,
+    .skill-category li {
+      color: #475569;
+      font-size: 8.5pt;
+    }
+
+    .skill-category ul {
+      list-style: none;
+      padding-left: 10px;
+    }
+
+    .skill-category li::before {
+      content: "• ";
+      color: #2563eb;
+    }
+
+    .item {
+      margin-bottom: 10px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 10pt;
+    }
+
+    .item-subtitle {
+      color: #64748b;
+      font-size: 9pt;
+    }
+
+    .item-period {
+      font-size: 8.5pt;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .item-description {
+      color: #475569;
+      font-size: 9pt;
+    }
+
+    .item-description ul {
+      list-style: disc;
+      padding-left: 14px;
+      margin-top: 3px;
+    }
+
+    .item-description li {
+      margin-bottom: 1px;
+    }
+
+    .tech {
+      font-size: 8pt;
+      color: #94a3b8;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9pt;
+      margin-bottom: 2px;
+    }
+
+    .lang-item .lang-name {
+      color: #1e293b;
+    }
+
+    .lang-item .lang-level {
+      color: #64748b;
+    }
+
+    .extra-skills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 16px;
+      font-size: 9pt;
+      color: #475569;
+    }
+
+    .extra-skills li {
+      list-style: none;
+      margin-bottom: 1px;
+    }
+
+    .extra-skills li::before {
+      content: "• ";
+      color: #2563eb;
+    }
+
+    @media print {
+      body {
+        padding: 20px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 12mm;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Bohdan Senichak</h1>
+    <div class="title">Full-Stack Developer | React & Node.js Specialist</div>
+    <div class="tagline">
+      Building modern web applications from scratch — from frontend to deployment. Experienced in real-time systems, CRM/ERP solutions, and interactive games.
+    </div>
+    <div class="contact">
+      <a href="tel:+380957004260">+38 (096) 700-42-60</a>
+      <span>|</span>
+      <a href="mailto:bsenk77@gmail.com">bsenk77@gmail.com</a>
+      <span>|</span>
+      <a href="https://github.com/BSenichak">GitHub</a>
+      <span>|</span>
+      <a href="https://linkedin.com/in/bohdan-senichak">LinkedIn</a>
+      <span>|</span>
+      <a href="https://bsenichak.vercel.app">bsenichak.vercel.app</a>
+      <span>|</span>
+      Київ, Україна
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Profile</h2>
+    <p class="summary">
+      Full-Stack Developer aiming to grow to the level of Senior Fullstack Developer and participate in creating scalable, reliable, and technologically complex projects. Passionate about clean architecture, real-time systems, and delivering production-ready solutions.
+    </p>
+  </section>
+
+  <div class="two-col">
+    <section class="section">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <strong>Frontend</strong>
+          <ul>
+            <li>React / Next.js</li>
+            <li>TypeScript / JavaScript</li>
+            <li>Material UI / Mantine UI</li>
+            <li>Redux / Zustand</li>
+            <li>Socket.io, Firebase</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <strong>Backend</strong>
+          <ul>
+            <li>Node.js / Express.js</li>
+            <li>Nest.js</li>
+            <li>REST API / GraphQL</li>
+            <li>JWT / bcrypt</li>
+            <li>WebRTC, Telegram/Discord bots</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <strong>Databases</strong>
+          <ul>
+            <li>MySQL, MongoDB</li>
+            <li>PostgreSQL</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <strong>DevOps</strong>
+          <ul>
+            <li>Linux (Ubuntu Server)</li>
+            <li>Docker / Docker Compose</li>
+            <li>Nginx / SSL</li>
+            <li>Cloudflare / DNS, VPS</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <strong>GameDev</strong>
+          <ul>
+            <li>Unity 2D/3D, C#</li>
+            <li>Photon</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Education</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">KNU named after Taras Shevchenko</span>
+          <span class="item-period">2019 — 2024</span>
+        </div>
+        <div class="item-subtitle">Faculty of Physics</div>
+        <div class="item-description">
+          <ul>
+            <li>Bachelor: Metrology and Optical Measurement Technology (2019–2022)</li>
+            <li>Master: Laser and Optical Measurement Technology (2022–2024)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Optical-Mechanical College</span>
+          <span class="item-period">2015 — 2019</span>
+        </div>
+        <div class="item-subtitle">Design of Optical and Optoelectronic Devices</div>
+      </div>
+    </section>
+  </div>
+
+  <section class="section">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Senior Teacher / Team Lead</span>
+        <span class="item-period">2021 — Present</span>
+      </div>
+      <div class="item-subtitle">Robocode</div>
+      <div class="item-description">
+        <ul>
+          <li>Developed and implemented a Full-Stack Web Development course from scratch</li>
+          <li>Won the Project Robocode competition twice with a team of students</li>
+          <li>Taught 50+ students the fundamentals of web development</li>
+          <li>Senior location teacher — mentoring junior teachers</li>
+          <li>Automated location workflows: Telegram bot + AI review generator</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Programming Teacher</span>
+        <span class="item-period">2023 — 2024</span>
+      </div>
+      <div class="item-subtitle">ITStep School</div>
+      <div class="item-description">
+        <ul>
+          <li>Taught Python, Web, C#, and Unity to students</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Computer Science Teacher</span>
+        <span class="item-period">2024 — Present</span>
+      </div>
+      <div class="item-subtitle">Gymnasium 260, Kyiv</div>
+      <div class="item-description">
+        <ul>
+          <li>Developed the school website from scratch: design to VPS deployment + Cloudflare Tunnel</li>
+          <li>Manages all IT equipment of the school</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Commercial Projects</h2>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Christmas Robocode</span>
+        <span class="item-period">2025</span>
+      </div>
+      <div class="tech">React • Node.js • MongoDB • Google OAuth2 • WebSocket</div>
+      <div class="item-description">
+        <ul>
+          <li>Full-featured multiplayer Sudoku game with tournament system</li>
+          <li>3 difficulty levels and real-time player synchronization</li>
+          <li>Google OAuth2 authorization, DDoS protection and recovery after attack</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">CRM System (Balteh Servis)</span>
+        <span class="item-period">2023</span>
+      </div>
+      <div class="tech">React • Material UI • Node.js</div>
+      <div class="item-description">
+        <ul>
+          <li>Frontend development of the CRM client part</li>
+          <li>Optimal UI/UX for B2B clients</li>
+          <li>Activity and error monitoring system</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span class="item-title">Portfolio Website</span>
+        <span class="item-period">2024</span>
+      </div>
+      <div class="tech">React • TypeScript • Material UI • Firebase • i18n</div>
+      <div class="item-description">
+        <ul>
+          <li>Personalized portfolio site with PDF resume</li>
+          <li>EN/UK localization support</li>
+          <li>Dark/Light themes and admin panel for content management</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="two-col">
+    <section class="section">
+      <h2 class="section-title">Languages</h2>
+      <div class="lang-item">
+        <span class="lang-name">Ukrainian</span>
+        <span class="lang-level">Native</span>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">English</span>
+        <span class="lang-level">B1-B2</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Additional Skills</h2>
+      <ul class="extra-skills">
+        <li>Unity 2D/3D + C#</li>
+        <li>Blender (basic 3D models)</li>
+        <li>Arduino / ESP32 / IoT</li>
+        <li>Docker</li>
+        <li>Python (automation)</li>
+        <li>Git / GitHub</li>
+      </ul>
+    </section>
+  </div>
+
+</body>
+</html>
